@@ -11,12 +11,12 @@
 class HelloDevGeekWeek extends React.Component {
   render(){
     return (
-      <div>Hello World</div>
+      <div>{this.props.greeting}</div>
     );
   }
 }
 
 ReactDOM.render(
-  <HelloDevGeekWeek />,
+  <HelloDevGeekWeek greeting="Hello!!!!!" />,
   document.getElementById('example')
 );

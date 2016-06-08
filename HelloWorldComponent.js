@@ -9,9 +9,17 @@
 
 
 class HelloDevGeekWeek extends React.Component {
+  alertHello(){
+    alert('hello world');
+  }
   render(){
     return (
-      <div>{this.props.greeting}</div>
+      <div>
+        <button onClick={this.alertHello} >
+          Alert
+        </button>
+        <div>{this.props.greeting}</div>
+      </div>
     );
   }
 }

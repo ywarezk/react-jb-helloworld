@@ -9,16 +9,34 @@
 
 
 class HelloDevGeekWeek extends React.Component {
-  alertHello(){
-    alert('hello world');
+  constructor(props) {
+    super(props);
+    this.state = {isGreetingShown: true};
+    this.toggleGreeting = this.toggleGreeting.bind(this);
   }
+
+  toggleGreeting(){
+    this.setState({isGreetingShown: !this.state.isGreetingShown});
+  }
+
   render(){
+    var msg = 'Hide Greeting';
+    if (!this.state.isGreetingShown){
+      msg = 'Show Greeting';
+    }
     return (
       <div>
-        <button onClick={this.alertHello} >
-          Alert
+        <button onClick={this.toggleGreeting} >
+          {msg}
         </button>
-        <div>{this.props.greeting}</div>
+        {
+          (() => {
+            if (this.state.isGreetingShown) {
+              return (<div>{this.props.greeting}</div>);
+            }
+            return null;
+          })()
+        }
       </div>
     );
   }

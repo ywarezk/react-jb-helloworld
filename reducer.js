@@ -28,7 +28,7 @@ function reducer(state = initialState, action){
       return Object.assign({}, state, {
         isLoading: action.payload
       });
-    case: 'SET_MOVIE':
+    case 'SET_MOVIE':
       return Object.assign({}, state, {
         movie: action.payload
       });

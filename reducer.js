@@ -11,7 +11,7 @@
  * Movie app initial state
  * @type {{isLoading: boolean, movie: null}}
  */
-const initialState = {
+var initialState = {
   isLoading: false,
   movie: null
 };
@@ -22,7 +22,7 @@ const initialState = {
  * @param {{type: String, payload: Object}} action
  * @returns {{isLoading: boolean, movie: null}}
  */
-function reducer(state = initialState, action){
+reducer = function reducer(state, action){
   switch (action.type){
     case 'TOGGLE_LOADING':
       return Object.assign({}, state, {
@@ -33,7 +33,7 @@ function reducer(state = initialState, action){
         movie: action.payload
       });
     default:
-      return state;
+      return initialState;
   }
 }
 

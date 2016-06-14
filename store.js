@@ -8,6 +8,6 @@
  */
 
 
-var store = Redux.createStore(reducer);
+store = Redux.createStore(reducer);
 
 console.log(store.getState());

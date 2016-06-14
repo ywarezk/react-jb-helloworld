@@ -23,7 +23,7 @@ const initialState = {
  * @returns {{isLoading: boolean, movie: null}}
  */
 function reducer(state = initialState, action){
-  switch (action.type):
+  switch (action.type){
     case 'TOGGLE_LOADING':
       return Object.assign({}, state, {
         isLoading: action.payload
@@ -34,6 +34,7 @@ function reducer(state = initialState, action){
       });
     default:
       return state;
+  }
 }
 
 

@@ -36,6 +36,8 @@ class SearchForm extends React.Component {
 
 
 ReactDOM.render(
-  <SearchForm />,
+  <ReactRedux.Provider store={store}>
+    <SearchForm />
+  </ReactRedux.Provider>,
   document.getElementById('example')
 );

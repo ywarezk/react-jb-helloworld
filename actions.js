@@ -43,9 +43,10 @@ action = function requestMovieFromApi(search) {
     dispatch(toggleLoading(true));
     var xmlHttp = new XMLHttpRequest();
     xmlHttp.onreadystatechange = function() {
-        if (xmlHttp.readyState == 4 && xmlHttp.status == 200){
-          dispatch(setMovie(xmlHttp.responseText));
-        }
+      if (xmlHttp.readyState == 4 && xmlHttp.status == 200){
+        dispatch(setMovie(xmlHttp.responseText));
+      }
+      dispatch(toggleLoading(false));
     }
     xmlHttp.open("GET", 'http://www.omdbapi.com/?t=' + search + '&y=&plot=short&r=json', true);
     xmlHttp.send(null);

@@ -8,6 +8,6 @@
  */
 
 
-store = Redux.createStore(reducer);
+store = Redux.createStore(reducer, Redux.applyMiddleware(ReduxThunk));
 
 console.log(store.getState());

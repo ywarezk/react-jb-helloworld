@@ -18,7 +18,6 @@ class SearchForm extends React.Component {
 
   searchSubmitted(event) {
     let searchString = this.refs.searchString.value;
-    debugger;
     this.props.requestMovieFromApi(searchString);
     event.preventDefault();
   }

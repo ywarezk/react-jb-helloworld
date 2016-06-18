@@ -38,7 +38,7 @@ function setMovie(movie) {
  * We send the request to the server from this action
  * @param {String} search
  */
-function requestMovieFromApi(search) {
+action = function requestMovieFromApi(search) {
   return function(dispatch) {
     dispatch(toggleLoading(true));
     var xmlHttp = new XMLHttpRequest();

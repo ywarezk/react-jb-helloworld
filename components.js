@@ -18,7 +18,7 @@ class SearchForm extends React.Component {
 
   searchSubmitted(event) {
     let searchString = this.refs.searchString.value;
-    alert(searchString);
+    this.props.requestMovieFromApi(searchString);
     event.preventDefault();
   }
 
@@ -29,15 +29,53 @@ class SearchForm extends React.Component {
           <input type="text" ref="searchString" />
           <input type="submit" value="Submit" />
         </form>
+        {
+          (() => {
+            if (this.props.isLoading) {
+              return (
+                <div>
+                  <h1>
+                    Loading...
+                  </h1>
+                </div>
+              );
+            }
+          })()
+        }
       </div>
     );
   }
 }
 
+/**
+ * which state we want to be transfered to the props of the searchform
+ * @param state
+ * @returns {{isLoading: (*|boolean), movie: (*|null)}}
+ */
+function mapStateToProps(state) {
+  return {
+    isLoading: state.isLoading,
+    movie: state.movie
+  }
+}
+
+/**
+ * which actions i want to transfer to our searchform
+ * @param dispatch
+ * @returns {{requestMovieFromApi: *}}
+ */
+function mapDispatchToProps(dispatch) {
+  return {
+    requestMovieFromApi: Redux.bindActionCreators(action, dispatch)
+  }
+}
+
+var SearchFormComponent = ReactRedux.connect(mapStateToProps, mapDispatchToProps)(SearchForm);
+
 
 ReactDOM.render(
   <ReactRedux.Provider store={store}>
-    <SearchForm />
+    <SearchFormComponent />
   </ReactRedux.Provider>,
   document.getElementById('example')
 );

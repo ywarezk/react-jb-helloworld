@@ -18,6 +18,7 @@ class SearchForm extends React.Component {
 
   searchSubmitted(event) {
     let searchString = this.refs.searchString.value;
+    debugger;
     this.props.requestMovieFromApi(searchString);
     event.preventDefault();
   }
@@ -25,10 +26,10 @@ class SearchForm extends React.Component {
   render(){
     return (
       <div>
-        <form onSubmit={this.searchSubmitted}>
           <input type="text" ref="searchString" />
-          <input type="submit" value="Submit" />
-        </form>
+          <button onClick={this.searchSubmitted} >
+            Submit
+          </button>
         {
           (() => {
             if (this.props.isLoading) {

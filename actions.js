@@ -40,6 +40,7 @@ function setMovie(movie) {
  */
 action = function requestMovieFromApi(search) {
   return function(dispatch) {
+    debugger;
     dispatch(toggleLoading(true));
     var xmlHttp = new XMLHttpRequest();
     xmlHttp.onreadystatechange = function() {

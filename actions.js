@@ -40,14 +40,13 @@ function setMovie(movie) {
  */
 action = function requestMovieFromApi(search) {
   return function(dispatch) {
-    debugger;
     dispatch(toggleLoading(true));
     var xmlHttp = new XMLHttpRequest();
     xmlHttp.onreadystatechange = function() {
-      if (xmlHttp.readyState == 4 && xmlHttp.status == 200){
-        dispatch(setMovie(xmlHttp.responseText));
+      if (xmlHttp.readyState == 3 && xmlHttp.status == 200){
+        dispatch(setMovie(JSON.parse(xmlHttp.responseText)));
+        dispatch(toggleLoading(false));
       }
-      dispatch(toggleLoading(false));
     }
     xmlHttp.open("GET", 'http://www.omdbapi.com/?t=' + search + '&y=&plot=short&r=json', true);
     xmlHttp.send(null);

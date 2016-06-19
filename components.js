@@ -25,10 +25,10 @@ class SearchForm extends React.Component {
   render(){
     return (
       <div>
+        <form onSubmit={this.searchSubmitted} >
           <input type="text" ref="searchString" />
-          <button onClick={this.searchSubmitted} >
-            Submit
-          </button>
+          <input type="submit" value="Submit" />
+        </form>
         {
           (() => {
             if (this.props.isLoading) {
@@ -37,6 +37,25 @@ class SearchForm extends React.Component {
                   <h1>
                     Loading...
                   </h1>
+                </div>
+              );
+            }
+          })()
+        }
+        {
+          (() => {
+            if (this.props.movie){
+              return (
+                <div>
+                  <h1>
+                    <strong>Title: </strong> {this.props.movie.Title}
+                  </h1>
+                  <p>
+                    <strong>Actors: </strong> {this.props.movie.Actors}
+                  </p>
+                  <p>
+                    <strong>IMDB Rating: </strong> {this.props.movie.imdbRating}
+                  </p>
                 </div>
               );
             }
